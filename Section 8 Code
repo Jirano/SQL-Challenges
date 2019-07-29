@@ -1,0 +1,30 @@
+
+1.
+#selecting all book titles that has "stories" in the title
+SELECT title FROM books WHERE title LIKE '%stories%';
+
+2.
+SELECT title, pages FROM books ORDER BY pages DESC LIMIT 1;
+
+#using subquery to return the book with the max number of pages and then selecting the title and page number that correlates with it.
+SELECT title, pages FROM books WHERE pages = (SELECT MAX(pages) FROM books);
+
+3.
+#concatenating the title with a "-" and book release year ordering by most recent book and limiting to 3 selections
+SELECT CONCAT(title, " - ", released_year) AS summary FROM books ORDER BY released_year DESC LIMIT 3;
+
+4. 
+#selecting title and author last name where the last name has a space
+SELECT title, author_lname FROM books WHERE author_lname LIKE '% %';
+
+5. 
+#selecting title, year, and stock sorting by stock quantity with a limit of 3 options
+SELECT title, released_year, stock_quantity FROM books ORDER BY stock_quantity LIMIT 3;
+
+6.
+#selecting book title and last name, first ordering by last name and then by title
+SELECT title, author_lname FROM books ORDER BY author_lname, title;
+
+7. 
+#Concatenating a string with author first and last name while making full name upper case in returned column
+SELECT CONCAT('MY FAVORITE AUTHOR IS ', UPPER(author_fname), ' ', UPPER(author_lname), '!') AS yell FROM books ORDER BY author_lname;
