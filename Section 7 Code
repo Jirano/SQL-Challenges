@@ -1,0 +1,23 @@
+3.
+#Replace all spaces in book titles with '->'
+SELECT REPLACE (title, ' ', '->') AS title FROM books;
+
+4.
+#Querying author last name as well as its reverse with aliases
+SELECT author_lname AS forwards, REVERSE(author_lname) AS backwards FROM books;
+
+5.
+#Selecting and concatening an author's full first and last name while capitalizing it
+SELECT CONCAT(UPPER(author_fname),' ', UPPER(author_lname)) AS 'full name in caps' FROM books;
+
+6. 
+#Concatening the title of a book with its release date along with a string in the middle
+SELECT CONCAT(title, ' was released in ', released_year) AS blurb FROM books;
+
+7. 
+#Selecting the title of the book along with character length
+SELECT title, CHAR_LENGTH(title) AS character_count FROM books;
+
+8. 
+#Querying the first 10 indexes of the title as a shortened title with elippses, querying the author's last and first names, querying the quantity of books in stock concatenated with a string.
+SELECT CONCAT(SUBSTR(title, 1,10), '...') AS short_title, CONCAT(author_lname, ', ', author_fname) AS author, CONCAT(stock_quantity, ' in stock') AS quantity  FROM books;
